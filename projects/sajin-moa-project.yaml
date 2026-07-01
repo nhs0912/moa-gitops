@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: sajin-moa
+  namespace: argocd
+spec:
+  description: sajin-moa applications
+
+  sourceRepos:
+    - https://github.com/nhs0912/moa-gitops.git
+
+  destinations:
+    - namespace: moa-dev
+      server: https://kubernetes.default.svc
+    - namespace: moa-stg
+      server: https://kubernetes.default.svc
+    - namespace: moa-prod
+      server: https://kubernetes.default.svc
+
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
+
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'

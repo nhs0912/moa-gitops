@@ -1,0 +1,17 @@
+resources:
+  - ../../base
+  - ingress.yaml
+
+namespace: moa-dev
+
+images:
+  - name: nhs0912/sajin-moa-back
+    newName: nhs0912/sajin-moa-back
+    newTag: dev-initial
+  - name: nhs0912/sajin-moa-front
+    newName: nhs0912/sajin-moa-front
+    newTag: dev-initial
+
+patches:
+  - path: backend-patch.yaml
+  - path: frontend-patch.yaml

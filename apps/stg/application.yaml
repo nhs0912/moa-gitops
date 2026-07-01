@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sajin-moa-stg
+  namespace: argocd
+spec:
+  project: sajin-moa
+  source:
+    repoURL: https://github.com/nhs0912/moa-gitops.git
+    targetRevision: main
+    path: workloads/sajin-moa/overlays/stg
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: moa-stg
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

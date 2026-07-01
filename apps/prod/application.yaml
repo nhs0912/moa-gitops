@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sajin-moa-prod
+  namespace: argocd
+spec:
+  project: sajin-moa
+  source:
+    repoURL: https://github.com/nhs0912/sajin-moa-gitops.git
+    targetRevision: main
+    path: workloads/sajin-moa/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: moa-prod
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
