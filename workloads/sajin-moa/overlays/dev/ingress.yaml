@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sajin-moa-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+
+spec:
+  ingressClassName: traefik
+
+  tls:
+    - hosts:
+        - dev.sajinmoa.com
+      secretName: sajin-moa-dev-tls
+
+  rules:
+    - host: dev.sajinmoa.com
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: sajin-moa-backend
+                port:
+                  number: 8080
+
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sajin-moa-frontend
+                port:
+                  number: 80

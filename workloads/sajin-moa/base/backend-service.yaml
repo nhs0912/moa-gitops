@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sajin-moa-backend
+  labels:
+    app.kubernetes.io/name: sajin-moa-backend
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: sajin-moa
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: sajin-moa-backend
+
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+      protocol: TCP
