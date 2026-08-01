@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: docker.io/nhs0912/moa-backend:latest
+          image: docker.io/nhs0912/sajin-moa-back:dev
           imagePullPolicy: Always
 
           ports:
