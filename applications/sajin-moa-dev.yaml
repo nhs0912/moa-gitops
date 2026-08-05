@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sajin-moa-dev
+  namespace: argocd
+
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  # 기존에 만든 AppProject 이름
+  project: sajin-moa
+
+  source:
+    repoURL: https://github.com/nhs0912/moa-gitops.git
+    targetRevision: main
+    path: workloads/sajin-moa/overlays/dev
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sajin-moa-dev
+
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
+
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
