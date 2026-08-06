@@ -36,8 +36,8 @@ spec:
             - configMapRef:
                 name: sajin-moa-config
 
-#            - secretRef:
-#                name: sajin-moa-backend-secret
+          #            - secretRef:
+          #                name: sajin-moa-backend-secret
 
           startupProbe:
             httpGet:
