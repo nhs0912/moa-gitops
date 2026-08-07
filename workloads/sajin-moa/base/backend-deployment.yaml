@@ -32,6 +32,11 @@ spec:
               containerPort: 8080
               protocol: TCP
 
+          volumeMounts:
+            - name: oci-private-key
+              mountPath: /app/secrets/oci
+              readOnly: true
+
           envFrom:
             - configMapRef:
                 name: sajin-moa-config
@@ -76,5 +81,9 @@ spec:
             capabilities:
               drop:
                 - ALL
-
+      volumes:
+      - name: oci-private-key
+        secret:
+          secretName: oci-private-key
+          defaultMode: 0400
       terminationGracePeriodSeconds: 30
