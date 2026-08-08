@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: sajin-moa-backend
   labels:
@@ -24,7 +25,9 @@ spec:
     spec:
       containers:
         - name: backend
-          image: docker.io/nhs0912/sajin-moa-back:dev
+
+          # base에서는 Kustomize가 찾을 기준 이름만 사용
+          image: docker.io/nhs0912/moa-backend
           imagePullPolicy: Always
 
           ports:
@@ -41,8 +44,9 @@ spec:
             - configMapRef:
                 name: sajin-moa-config
 
-          #            - secretRef:
-          #                name: sajin-moa-backend-secret
+          # Secret을 env로 추가할 경우 사용
+          # - secretRef:
+          #     name: sajin-moa-backend-secret
 
           startupProbe:
             httpGet:
@@ -81,9 +85,11 @@ spec:
             capabilities:
               drop:
                 - ALL
+
       volumes:
-      - name: oci-private-key
-        secret:
-          secretName: oci-private-key
-          defaultMode: 0400
+        - name: oci-private-key
+          secret:
+            secretName: oci-private-key
+            defaultMode: 0400
+
       terminationGracePeriodSeconds: 30

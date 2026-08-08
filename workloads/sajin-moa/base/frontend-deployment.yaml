@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: sajin-moa-frontend
   labels:
@@ -24,7 +25,9 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: docker.io/nhs0912/moa-frontend:latest
+
+          # base에서는 Kustomize가 찾을 기준 이미지 이름만 사용
+          image: docker.io/nhs0912/moa-frontend
           imagePullPolicy: Always
 
           ports:
