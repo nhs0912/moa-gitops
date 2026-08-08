@@ -4,20 +4,23 @@ kind: Kustomization
 namespace: sajin-moa-dev
 
 resources:
-  - ../../base
-  - namespace.yaml
-  - ingress.yaml
+- ../../base
+- namespace.yaml
+- ingress.yaml
 
 patches:
-  - path: backend-patch.yaml
-  - path: frontend-patch.yaml
-  - path: configmap-patch.yaml
+- path: backend-patch.yaml
+- path: frontend-patch.yaml
+- path: configmap-patch.yaml
+
 
 images:
-  - name: docker.io/nhs0912/moa-backend
-    newName: docker.io/nhs0912/sajin-moa-backend
-    newTag: dev
-
-  - name: docker.io/nhs0912/moa-frontend
-    newName: docker.io/nhs0912/sajin-moa-frontend
-    newTag: dev
+- name: docker.io/nhs0912/moa-back
+- name: docker.io/nhs0912/moa-backend
+  newName: docker.io/nhs0912/sajin-moa-backend
+  newTag: dev-78e7ed5
+- name: docker.io/nhs0912/moa-frontend
+  newName: docker.io/nhs0912/sajin-moa-frontend
+  newTag: dev-aa50196
+- name: docker.io/nhs0912/sajin-moa-back
+  newTag: 03538b8
