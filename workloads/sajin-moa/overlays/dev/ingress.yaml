@@ -10,11 +10,11 @@ spec:
 
   tls:
     - hosts:
-        - dev.sajinmoa.com
+        - sajin-moa-dev.duckdns.org
       secretName: sajin-moa-dev-tls
 
   rules:
-    - host: dev.sajinmoa.com
+    - host: sajin-moa-dev.duckdns.org
       http:
         paths:
           - path: /api
