@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/part-of: sajin-moa
 
 spec:
-  revisionHistoryLimit: 3  # 💡 여기에 남겨둘 이전 RS 개수를 지정 (기본값은 보통 10)
+  revisionHistoryLimit: 2  # 💡 여기에 남겨둘 이전 RS 개수를 지정 (기본값은 보통 10)
   replicas: 1
 
   selector:
