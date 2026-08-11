@@ -24,3 +24,6 @@ images:
   newTag: dev-8d43764
 - name: docker.io/nhs0912/sajin-moa-back
   newTag: 03538b8
+- name: docker.io/nhs0912/sajin-moa-frontend
+  newName: docker.io/nhs0912/sajin-moa-frontend
+  newTag: dev-3817961
