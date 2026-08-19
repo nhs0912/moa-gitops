@@ -46,8 +46,8 @@ spec:
                 name: sajin-moa-config
 
           # Secret을 env로 추가할 경우 사용
-          # - secretRef:
-          #     name: sajin-moa-backend-secret
+            - secretRef:
+                name: sajin-moa-backend-secret
 
           startupProbe:
             httpGet:
