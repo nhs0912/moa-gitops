@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sajin-moa-redis-pvc
+  labels:
+    app.kubernetes.io/name: sajin-moa-redis
+    app.kubernetes.io/component: redis
+    app.kubernetes.io/part-of: sajin-moa
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+
+  resources:
+    requests:
+      storage: 1Gi
