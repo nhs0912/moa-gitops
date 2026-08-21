@@ -45,10 +45,14 @@ spec:
             - configMapRef:
                 name: sajin-moa-config
 
-          # Secret을 env로 추가할 경우 사용
-            - secretRef:
-                name: sajin-moa-backend-secret
+          env:
+            - name: SPRING_DATA_REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sajin-moa-redis-secret
+                  key: redis-password
 
+          # Secret을 env로 추가할 경우 사용
           startupProbe:
             httpGet:
               path: /actuator/health
